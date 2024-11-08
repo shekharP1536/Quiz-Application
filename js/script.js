@@ -9,19 +9,29 @@ const option_list = document.querySelector(".option_list");
 const time_line = document.querySelector("header .time_line");
 const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
-
-let username = localStorage.getItem("username");
+var username = document.getElementById("user_name");
 
 // If username is not found in localStorage, prompt for username
-if (!username) {
-  username = prompt("Please enter your username:");
-  localStorage.setItem("username", username); // Save it for future use
-}
+let user = localStorage.getItem("username");
+document.getElementById("user_name").value = user;
+
 let sec = "genai_q";
-let generated_id = username + sec;
+let generated_id = user + sec;
 // if startQuiz button clicked
-start_btn.onclick = () => {
-  info_box.classList.add("activeInfo"); //show info box
+start_btn.onclick = (event) => {
+  event.preventDefault(); // Prevents the default action
+
+  var username = document.getElementById("user_name").value;
+  console.log("clicked");
+  console.log(username);
+
+  if (username) {
+    // Check if username has a value
+    localStorage.setItem("username", username); // Save it for future use
+    info_box.classList.add("activeInfo"); // Show info box
+  } else {
+    alert("Please enter a your name");
+  }
 };
 
 // if exitQuiz button clicked
@@ -154,6 +164,8 @@ let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 //if user clicked on option
 function optionSelected(answer) {
+  username = localStorage.getItem("username");
+  console.log(username);
   clearInterval(counter); //clear counter
   clearInterval(counterLine); //clear counterLine
   let userAns = answer.textContent; //getting user selected option
@@ -229,7 +241,7 @@ function showResult() {
   } else if (userScore > 1) {
     // if user scored more than 1
     let scoreTag =
-      "<span>and nice 😎, You got <p>" +
+      "<span>and nice 😎, You attended <p>" +
       userScore +
       "</p> out of <p>" +
       questions.length +
@@ -238,7 +250,7 @@ function showResult() {
   } else {
     // if user scored less than 1
     let scoreTag =
-      "<span>and sorry 😐, You got only <p>" +
+      "<span>and sorry 😐, You attended only <p>" +
       userScore +
       "</p> out of <p>" +
       questions.length +

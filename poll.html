@@ -11,8 +11,13 @@
 </head>
 <body>
     <!-- start Quiz button -->
-    <div class="start_btn"><button>Start Poll</button></div>
+    <form>
+        <div class="start_btn" style="display: flex;flex-direction: column;">
 
+            <input type="text" id="user_name" class="name_input" placeholder="Enter Your name" required>
+            <button type="submit">Start Quiz</button>
+        </div>
+    </form>
     <!-- Info Box -->
     <div class="info_box">
         <div class="info-title"><span>Rules of this POLL</span></div>
