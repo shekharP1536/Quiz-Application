@@ -12,8 +12,8 @@ const timeCount = document.querySelector(".timer .timer_sec");
 
 let user = localStorage.getItem("username");
 document.getElementById("user_name").value = user;
-let sec = "genai_q";
-let generated_id = user + sec;
+let sec = "genai_meme";
+let generated_id =  sec + user;
 // if startQuiz button clicked
 start_btn.onclick = (event) => {
   event.preventDefault(); // Prevents the default action

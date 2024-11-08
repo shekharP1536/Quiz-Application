@@ -16,7 +16,7 @@ let user = localStorage.getItem("username");
 document.getElementById("user_name").value = user;
 
 let sec = "genai_q";
-let generated_id = user + sec;
+let generated_id =  sec+user;
 // if startQuiz button clicked
 start_btn.onclick = (event) => {
   event.preventDefault(); // Prevents the default action
